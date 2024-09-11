@@ -9,6 +9,11 @@ import ErrorPage from './error-page';
 import Root from './routes/root';
 import Contacts from './routes/contacts';
 import Charts from './routes/charts';
+import { persistor, store } from './store';
+import { Provider } from 'react-redux';
+import AddContact from './routes/add-contact';
+import { PersistGate } from 'redux-persist/integration/react';
+import EditContact from './routes/edit-contact';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/charts",
         element: <Charts />,
+      },
+      {
+        path: "/add-contact",
+        element: <AddContact />,
+      },
+      {
+        path: "/edit-contact",
+        element: <EditContact />,
       }
     ],
   },
@@ -30,6 +43,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+    </PersistGate>
+    </Provider>
   </StrictMode>,
 )
