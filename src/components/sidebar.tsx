@@ -25,7 +25,7 @@ const Sidebar = () => {
         className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-5 transition-transform duration-300 ease-in-out transform z-10 ${isOpen ? 'translate-x-0' : '-translate-x-full'
           } md:translate-x-0`}
       >
-        <h2 className="text-2xl font-bold mb-6">Contacts Management</h2>
+        <Link to="/"><h2 className="text-2xl font-bold mb-6">Contacts Management</h2></Link>
         <nav>
           <ul>
             {menuItems.map((item, index) => (
