@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+# COVID-19 Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple dashboard that displays COVID-19 data using a line graph for case fluctuations and a map with country-specific data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Line graph showing global COVID-19 case fluctuations over time
+- Interactive map with markers for each country, displaying:
+  - Total number of active cases
+  - Total number of recovered cases
+  - Total number of deaths
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React with TypeScript
+- Vite for project setup and bundling
+- React Query for API data fetching and caching
+- Recharts for the line graph
+- React Leaflet for the map
+- Tailwind CSS for styling
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+- Node.js (version 14 or later)
+- npm (usually comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/covid-dashboard.git
+   cd covid-dashboard
+
+2. Install dependencies:
+   ```bash
+   npm install
+
+## Running the App
+
+To start the development server:
+   ```bash
+   npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+The app will be available at http://localhost:5173 (or another port if 5173 is in use).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## API Endpoints
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+This dashboard uses the following API endpoints from the disease.sh API:
+
+### Worldwide COVID-19 data:
+
+- **Endpoint:** `https://disease.sh/v3/covid-19/all`
+- **Used for:** Fetching global statistics
+
+### Country-specific COVID-19 data:
+
+- **Endpoint:** `https://disease.sh/v3/covid-19/countries`
+- **Used for:** Fetching data for map markers
+
+### Historical data for case fluctuations:
+
+- **Endpoint:** `https://disease.sh/v3/covid-19/historical/all?lastdays=all`
+- **Used for:** Generating the line graph of case fluctuations over time
+
+
+

@@ -14,6 +14,9 @@ import { Provider } from 'react-redux';
 import AddContact from './routes/add-contact';
 import { PersistGate } from 'redux-persist/integration/react';
 import EditContact from './routes/edit-contact';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -43,10 +46,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+     <QueryClientProvider client={queryClient}>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <RouterProvider router={router} />
     </PersistGate>
     </Provider>
+    </QueryClientProvider>
   </StrictMode>,
 )
